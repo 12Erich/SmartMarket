@@ -24,5 +24,47 @@ namespace SmartMarket
         {
             InitializeComponent();
         }
+
+        private void btnLogout_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void btnCloseMenu_Click(object sender, RoutedEventArgs e)
+        {
+            btnOpenMenu.Visibility = Visibility.Visible;
+            btnCloseMenu.Visibility = Visibility.Collapsed;
+        }
+
+        private void btnOpenMenu_Click(object sender, RoutedEventArgs e)
+        {
+            btnCloseMenu.Visibility = Visibility.Visible;
+            btnOpenMenu.Visibility = Visibility.Collapsed;
+        }
+
+        private void listHome_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void listBusca_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void listCadastro_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void listCaixa_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void btnMenu_Click(object sender, RoutedEventArgs e)
+        {
+            //btnMenu.IsChecked
+        }
     }
 }

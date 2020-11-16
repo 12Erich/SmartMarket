@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "nscfHLHPF/XJpb4b05gF0rejnVnz51ZVwjHVz2DLhk/HSPcvgV8ckjrSk+7wDDbe6BKKwEpYX21XNUJXcXkukg==",
+  "dgSpecHash": "YP4ig24SGUctqJKhdDx6qBzuzBWTAcOqO6GmoaRtnG08SJj3jhFGl5moL/YJ/4sURnjNkFsOMXmVniKHPnInbw==",
   "success": true,
   "projectFilePath": "C:\\Users\\erik.fernandes\\Desktop\\Projects Git\\SmartMarket\\SmartMarket\\SmartMarket\\SmartMarket.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\erik.fernandes\\.nuget\\packages\\materialdesigncolors\\2.0.0-ci2265\\materialdesigncolors.2.0.0-ci2265.nupkg.sha512",
+    "C:\\Users\\erik.fernandes\\.nuget\\packages\\materialdesignthemes\\4.0.0-ci2265\\materialdesignthemes.4.0.0-ci2265.nupkg.sha512"
+  ],
   "logs": []
 }
