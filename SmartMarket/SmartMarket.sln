@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30621.155
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartMarket", "SmartMarket\SmartMarket.csproj", "{2DC9CE73-9E05-47FC-BD7C-8B8C85F5422B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartMarket", "SmartMarket\SmartMarket.csproj", "{B0D0154E-0EB8-4DF9-91A7-686A147EF163}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2DC9CE73-9E05-47FC-BD7C-8B8C85F5422B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2DC9CE73-9E05-47FC-BD7C-8B8C85F5422B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2DC9CE73-9E05-47FC-BD7C-8B8C85F5422B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2DC9CE73-9E05-47FC-BD7C-8B8C85F5422B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0D0154E-0EB8-4DF9-91A7-686A147EF163}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0D0154E-0EB8-4DF9-91A7-686A147EF163}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0D0154E-0EB8-4DF9-91A7-686A147EF163}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0D0154E-0EB8-4DF9-91A7-686A147EF163}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {74C96B28-77E1-42DC-8E04-06871494D955}
+		SolutionGuid = {5B50CBB4-8FDC-4C45-BED1-DA10465B8296}
 	EndGlobalSection
 EndGlobal
