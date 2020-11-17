@@ -9,7 +9,7 @@
       Title="Cadastro">
 
 
-    <Grid  Background="AliceBlue">
+    <Grid HorizontalAlignment="Stretch"  Background="AliceBlue">
 
         <TextBox x:Name="txMarca" HorizontalAlignment="Left" Margin="68,50,0,0" VerticalAlignment="Top" Height="24" Width="270" RenderTransformOrigin="-1.092,-1.862"/>
         <Label Foreground="Black" x:Name="labelMarca" Content="Marca" HorizontalAlignment="Left" Margin="14,58,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.651,1.423"/>

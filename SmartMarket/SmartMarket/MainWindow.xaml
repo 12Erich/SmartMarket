@@ -11,162 +11,157 @@
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
         TextOptions.TextFormattingMode="Ideal" 
-        TextOptions.TextRenderingMode="Auto"        
+        TextOptions.TextRenderingMode="Auto"       
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}">
     <Window.Resources>
-        <Storyboard x:Key="MenuOpen">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
-                <EasingDoubleKeyFrame KeyTime="0" Value="80"></EasingDoubleKeyFrame>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="200"></EasingDoubleKeyFrame>
+        <Storyboard x:Key="CloseMenu">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Grid.Width)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="200"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="70"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
-        <Storyboard x:Key="MenuClose">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
-                <EasingDoubleKeyFrame KeyTime="0" Value="200"></EasingDoubleKeyFrame>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="80"></EasingDoubleKeyFrame>
+        <Storyboard x:Key="OpenMenu">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Grid.Width)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="70"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="200"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
-
-        <Storyboard x:Key="btnMenu">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
-                <EasingDoubleKeyFrame KeyTime="0" Value="200"></EasingDoubleKeyFrame>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="80"></EasingDoubleKeyFrame>
-            </DoubleAnimationUsingKeyFrames>
-        </Storyboard>
-
     </Window.Resources>
-    <Window.Triggers>
-        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="btnOpenMenu">
-            <BeginStoryboard Storyboard="{StaticResource MenuOpen}"></BeginStoryboard>
-        </EventTrigger>
-        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="btnCloseMenu">
-            <BeginStoryboard Storyboard="{StaticResource MenuClose}"></BeginStoryboard>
-        </EventTrigger>
+    <Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Background="red" Grid.Column="1">
+                <Grid Background="#FFEEEEEE" >
 
-        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="btnMenu">
-            <BeginStoryboard Storyboard="{StaticResource btnMenu}"></BeginStoryboard>
-        </EventTrigger>
-        
-    </Window.Triggers>
-    <Grid Background="LightGray">
-        <Grid Height="70" VerticalAlignment="Top" Background="#FF171A66" Margin="80,0,0,0">
-            <Grid.RowDefinitions>
-            </Grid.RowDefinitions>
-            <StackPanel VerticalAlignment="Top" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,35,0,0"/>
-            <ToggleButton x:Name="btnMenu" HorizontalAlignment="Left" Margin="20" IsChecked="True" Click="btnMenu_Click"></ToggleButton>
-        </Grid>
-        <Grid x:Name="GridMenu" Width="80" HorizontalAlignment="Left" Background="#FF171A66">
-            <StackPanel>
-                <Grid Height="150" Background="White">
-                    <Button x:Name="btnCloseMenu" Width="80" Height="60" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Right" Visibility="Collapsed" Click="btnCloseMenu_Click">
-                        <materialDesign:PackIcon Foreground="#FF171A66" Kind="ArrowLeft"></materialDesign:PackIcon>
-                    </Button>
-                    <Button x:Name="btnOpenMenu" Width="80" Height="60" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Right" Click="btnOpenMenu_Click">
-                        <materialDesign:PackIcon Foreground="#FF171A66" Kind="Menu"></materialDesign:PackIcon>
-                    </Button>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <Grid Height="auto" Background="Yellow" HorizontalAlignment="Stretch">
+                        
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Height="40" HorizontalAlignment="Right" Margin="10">
+                            <Button x:Name="ButtonAlerta" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Click="ButtonAlerta_Click">
+                                <materialDesign:PackIcon Kind="Bell"/>
+                            </Button>
+                            <Button x:Name="ButtonClose" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Click="ButtonClose_Click">
+                                <materialDesign:PackIcon Kind="Power"/>
+                            </Button>
+                        </StackPanel>
+
+                    </Grid>
+                    <DockPanel Grid.Row="2" HorizontalAlignment="Stretch">
+                        <DockPanel.RenderTransform>
+                            <TransformGroup>
+                                <!--<ScaleTransform ScaleY="-1"/>-->
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </DockPanel.RenderTransform>
+                        <Frame x:Name="Frame" NavigationUIVisibility="Hidden" Source="Home.xaml" />
+                    </DockPanel>
                 </Grid>
-                <ListView  ScrollViewer.HorizontalScrollBarVisibility="Disabled" Foreground="AliceBlue">
-                    <ListViewItem x:Name="listHome" x:Uid="listHome" Height="60" RenderTransformOrigin="0.5,0.5" PreviewMouseLeftButtonUp="listHome_PreviewMouseLeftButtonUp">
-                        <ListViewItem.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </ListViewItem.RenderTransform>
-                        <StackPanel x:Name="PanelHome" Orientation="Horizontal" Margin="10 0">
-                            <materialDesign:PackIcon Kind="Home" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
-                            <TextBlock Text="Home" Margin="10" VerticalAlignment="Center"/>
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem x:Name="listBusca" Height="60" RenderTransformOrigin="0.5,0.5" PreviewMouseLeftButtonUp="listBusca_PreviewMouseLeftButtonUp">
-                        <ListViewItem.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </ListViewItem.RenderTransform>
-                        <StackPanel Orientation="Horizontal" Margin="10 0">
-                            <materialDesign:PackIcon Kind="AccountSearch" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
-                            <TextBlock Text="Consulta" Margin="10" VerticalAlignment="Center"/>
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem x:Name="listCadastro" Height="60" RenderTransformOrigin="0.5,0.5" PreviewMouseLeftButtonUp="listCadastro_PreviewMouseLeftButtonUp">
-                        <ListViewItem.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </ListViewItem.RenderTransform>
-                        <StackPanel Orientation="Horizontal" Margin="10 0">
-                            <materialDesign:PackIcon Kind="Barcode"  Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
-                            <TextBlock Text="Cadastro" Margin="10" VerticalAlignment="Center"/>
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem x:Name="listCaixa" Height="60" RenderTransformOrigin="0.5,0.5" PreviewMouseLeftButtonUp="listCaixa_PreviewMouseLeftButtonUp">
-                        <ListViewItem.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </ListViewItem.RenderTransform>
-                        <StackPanel Orientation="Horizontal" Margin="10 0">
-                            <materialDesign:PackIcon Kind="CashUsd" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
-                            <TextBlock Text="Caixa" Margin="10" VerticalAlignment="Center"/>
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem x:Name="listEstoque" Height="60" RenderTransformOrigin="0.5,0.5">
-                        <ListViewItem.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </ListViewItem.RenderTransform>
-                        <StackPanel Orientation="Horizontal" Margin="10 0">
-                            <materialDesign:PackIcon Kind="CubeOutline" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
-                            <TextBlock Text="Estoque" Margin="10" VerticalAlignment="Center"/>
-                        </StackPanel>
-                    </ListViewItem>
-                </ListView>
+            </Grid>
+            <!--<Grid x:Name="grid" Width="200" Background="#FF6C6C8D" RenderTransformOrigin="0.5,0.5" Grid.Column="0">
+                <Button x:Name="button" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10" Style="{StaticResource MaterialDesignFlatButton}" Click="Button_Click">
+                    <materialDesign:PackIcon Kind="Menu" Foreground="White"/>
+                </Button>
+            </Grid>-->
 
+            <Grid x:Name="GridMenu" Width="200" RenderTransformOrigin="0.5,0.5" Grid.Column="0" Background="#FF171A66">
+                <StackPanel>
+                    <Grid Height="100" Background="White">
+                        <Button x:Name="button" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10" Style="{StaticResource MaterialDesignFlatButton}" Click="Button_Click">
+                            <materialDesign:PackIcon Kind="Menu"/>
+                        </Button>
+                        <!--<Button x:Name="btnCloseMenu" Width="80" Height="60" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Right" Visibility="Collapsed" Click="btnCloseMenu_Click">
+                            <materialDesign:PackIcon Foreground="#FF171A66" Kind="ArrowLeft"></materialDesign:PackIcon>
+                        </Button>
+                        <Button x:Name="btnOpenMenu" Width="80" Height="60" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Right" Click="btnOpenMenu_Click">
+                            <materialDesign:PackIcon Foreground="#FF171A66" Kind="Menu"></materialDesign:PackIcon>
+                        </Button>-->
+                    </Grid>
+                    <ListView  ScrollViewer.HorizontalScrollBarVisibility="Disabled" Foreground="AliceBlue">
+                        <ListViewItem x:Name="listHome" x:Uid="listHome" Height="60" RenderTransformOrigin="0.5,0.5" PreviewMouseLeftButtonUp="listHome_PreviewMouseLeftButtonUp">
+                            <ListViewItem.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ListViewItem.RenderTransform>
+                            <StackPanel x:Name="PanelHome" Orientation="Horizontal" Margin="10 0">
+                                <materialDesign:PackIcon Kind="Home" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
+                                <TextBlock Text="Home" Margin="10" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem x:Name="listBusca" Height="60" RenderTransformOrigin="0.5,0.5" PreviewMouseLeftButtonUp="listBusca_PreviewMouseLeftButtonUp">
+                            <ListViewItem.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ListViewItem.RenderTransform>
+                            <StackPanel Orientation="Horizontal" Margin="10 0">
+                                <materialDesign:PackIcon Kind="AccountSearch" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
+                                <TextBlock Text="Consulta" Margin="10" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem x:Name="listCadastro" Height="60" RenderTransformOrigin="0.5,0.5" PreviewMouseLeftButtonUp="listCadastro_PreviewMouseLeftButtonUp">
+                            <ListViewItem.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ListViewItem.RenderTransform>
+                            <StackPanel Orientation="Horizontal" Margin="10 0">
+                                <materialDesign:PackIcon Kind="Barcode"  Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
+                                <TextBlock Text="Cadastro" Margin="10" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem x:Name="listCaixa" Height="60" RenderTransformOrigin="0.5,0.5" PreviewMouseLeftButtonUp="listCaixa_PreviewMouseLeftButtonUp">
+                            <ListViewItem.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ListViewItem.RenderTransform>
+                            <StackPanel Orientation="Horizontal" Margin="10 0">
+                                <materialDesign:PackIcon Kind="CashUsd" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
+                                <TextBlock Text="Caixa" Margin="10" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem x:Name="listEstoque" Height="60" RenderTransformOrigin="0.5,0.5">
+                            <ListViewItem.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ListViewItem.RenderTransform>
+                            <StackPanel Orientation="Horizontal" Margin="10 0">
+                                <materialDesign:PackIcon Kind="CubeOutline" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
+                                <TextBlock Text="Estoque" Margin="10" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </ListViewItem>
+                    </ListView>
 
-                <!--<ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Foreground="AliceBlue">
-                    <ListViewItem Height="60">
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="ViewDashboard" Height="25" Width="25" Margin="10" VerticalAlignment="Center"></materialDesign:PackIcon>
-                            <TextBlock Text="Home" VerticalAlignment="Center" Margin="20 10"></TextBlock>
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem Height="60">
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="ViewDashboard" Height="25" Width="25" Margin="10" VerticalAlignment="Center"></materialDesign:PackIcon>
-                            <TextBlock Text="Home" VerticalAlignment="Center" Margin="20 10"></TextBlock>
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem Height="60">
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="ViewDashboard" Height="25" Width="25" Margin="10" VerticalAlignment="Center"></materialDesign:PackIcon>
-                            <TextBlock Text="Home" VerticalAlignment="Center" Margin="20 10"></TextBlock>
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem Height="60">
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="ViewDashboard" Height="25" Width="25" Margin="10" VerticalAlignment="Center"></materialDesign:PackIcon>
-                            <TextBlock Text="Home" VerticalAlignment="Center" Margin="20 10"></TextBlock>
-                        </StackPanel>
-                    </ListViewItem>
-                </ListView>-->
-            </StackPanel>
+                </StackPanel>
+            </Grid>
+
         </Grid>
     </Grid>
 </Window>
