@@ -74,7 +74,7 @@ namespace SmartMarket
 
         private void listBusca_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-
+            Frame.Source = new Uri("/Consulta_Produtos.xaml", UriKind.Relative);
         }
 
         private void listCadastro_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
